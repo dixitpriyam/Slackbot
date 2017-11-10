@@ -18,7 +18,7 @@ app.listen(port, function () {
 app.post('/Hello', function (req, res, next) {
   var userName = req.body.user_name;
   var botPayload = {
-    text : 'Hello ' + userName + ', welcome to Devdactic Slack channel! I\'ll be your guide.'
+    text : 'Hello ' + userName + ', Im PD your Slack BOT!'
   };
   // Loop otherwise..
   if (userName !== 'slackbot') {
@@ -43,32 +43,25 @@ app.post('/Hello', function (req, res, next) {
 // });
 
 
-app.post('/Hi', function (req, res, next) {
-  //var body = JSON.stringify(req.body)
-  //var userName = req.body.user_name;
-  // var botPayload = {
-  //   text : 'Hi ' + userName + ', welcome to Devdactic Slack channel! I\'ll be your guide.' +'BODY: '+body
-  // };
-
+app.post('/Views', function (req, res, next) {
+	var userName = req.body.user_name;
+ 
 var requestify = require('requestify');
 
-requestify.get('http://analytics-jenkins.cengage.info/api/json')
+requestify.get('http://ip.jsontest.com/')
   .then(function(response) {
       // Get the response body (JSON parsed or jQuery object for XMLs)
       var body = JSON.stringify(response.getBody());
-
-  }
-);
-
-
-var botPayload = {
+      console.log('Body: ' + body);
+      var botPayload = {
     text : 'List of all Views: '+body
   }; 
-
   // Loop otherwise..
   if (userName !== 'slackbot') {
     return res.status(200).json(botPayload);
   } else {
     return res.status(200).end();
   }
+  }
+);
 });

@@ -1,13 +1,17 @@
 {
-  "name": "devdacticBot",
+  "name": "PDBot",
   "version": "0.0.1",
   "description": "Simple testing Node server",
+  "scripts":{
+    "start":"node app.js"
+  },
   "main": "app.js",
   "author": "Simon Reimler",
   "license": "MIT",
   "dependencies": {
     "express": "^4.x.x",
     "body-parser": "^1.x.x",
-    "request": "2.56.x"
+    "request": "2.56.x",
+    "requestify": "0.2.5"
   }
 }
